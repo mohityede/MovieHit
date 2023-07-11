@@ -9,7 +9,6 @@ const header = {
 
 export const fetchData = async (url, params) => {
     try {
-        console.log("token", API_TOKEN)
         const res = await axios.get(BASE_URI + url, {
             headers: header,
             params: params
