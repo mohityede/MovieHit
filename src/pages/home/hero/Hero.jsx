@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./style.scss";
 import useFetchData from "../../../hooks/useFetchData";
-import { useSelector } from "react-redux";
+import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
+import LazyImg from "../../../components/lazyLoadImg/LazyImg";
 
 const Hero = () => {
 	const [searchQuery, setSearchQuery] = useState("");
@@ -27,28 +29,28 @@ const Hero = () => {
 		}
 	}
 	return (
-		<div>
-			<div className="heroBanner">
-				<div className="wrapper">
-					<div className="heroBannerContent">
-						<span className="title">
-							Welcome To MovieHit
-						</span>
-						<span className="subTitle">
-							Find your Movie here.
-						</span>
-						<div className="searchInput">
-							<input
-								type="text"
-								placeholder="Search here..."
-								onChange={ (e) => setSearchQuery(e.target.value) }
-								onKeyUp={ searchQueryHandler }
-							/>
-							<button>Search</button>
-						</div>
+		<div className="heroBanner">
+			{ !loading && <LazyImg src={ backgroundImg } className="backdrop-img" /> }
+			<div className="opacity-layer"></div>
+			<ContentWrapper>
+				<div className="heroBannerContent">
+					<span className="title">
+						Welcome To MovieHit
+					</span>
+					<span className="subTitle">
+						Find your Movie here.
+					</span>
+					<div className="searchInput">
+						<input
+							type="text"
+							placeholder="Search here..."
+							onChange={ (e) => setSearchQuery(e.target.value) }
+							onKeyUp={ searchQueryHandler }
+						/>
+						<button>Search</button>
 					</div>
 				</div>
-			</div>
+			</ContentWrapper>
 		</div>
 	)
 }
