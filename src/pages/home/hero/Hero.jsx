@@ -11,7 +11,6 @@ const Hero = () => {
 	const [backgroundImg, setBackgroundImg] = useState("");
 	const navigate = useNavigate();
 	const { url } = useSelector(state => state.home);
-
 	const { data, loading } = useFetchData("/movie/upcoming");
 
 	useEffect(() => {
@@ -22,7 +21,6 @@ const Hero = () => {
 		}
 	}, [data]);
 
-
 	const searchQueryHandler = (e) => {
 		if (e.key === "Enter" && searchQuery.length > 0) {
 			navigate(`/search/${searchQuery}`);
@@ -30,7 +28,9 @@ const Hero = () => {
 	}
 	return (
 		<div className="heroBanner">
-			{ !loading && <LazyImg src={ backgroundImg } className="backdrop-img" /> }
+			{ !loading && <div className="backdrop-img">
+				<LazyImg src={ backgroundImg } />
+			</div> }
 			<div className="opacity-layer"></div>
 			<ContentWrapper>
 				<div className="heroBannerContent">
@@ -38,7 +38,7 @@ const Hero = () => {
 						Welcome To MovieHit
 					</span>
 					<span className="subTitle">
-						Find your Movie here.
+						Find your favorites Movie here.
 					</span>
 					<div className="searchInput">
 						<input

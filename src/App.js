@@ -25,7 +25,7 @@ function App() {
       const res = await fetchData("/configuration");
       console.log(res);
       const url = {
-        backdropImgPath: res.images.secure_base_url + "w500"
+        backdropImgPath: res.images.secure_base_url + "original"
       }
       dispatch(getApiConfig(url));
     } catch (err) {
