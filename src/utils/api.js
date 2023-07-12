@@ -9,11 +9,11 @@ const header = {
 
 export const fetchData = async (url, params) => {
     try {
-        const res = await axios.get(BASE_URI + url, {
+        const { data } = await axios.get(BASE_URI + url, {
             headers: header,
             params: params
         })
-        return res.data;
+        return data;
     } catch (error) {
         console.error(error);
         return error;

@@ -18,13 +18,16 @@ function App() {
   const { url } = useSelector(state => state.home);
 
   useEffect(() => {
-    getPopular();
+    getConfiguration();
   }, []);
-  const getPopular = async () => {
+  const getConfiguration = async () => {
     try {
-      const res = await fetchData("/movie/popular");
+      const res = await fetchData("/configuration");
       console.log(res);
-      dispatch(getApiConfig(res));
+      const url = {
+        backdropImgPath: res.images.secure_base_url + "original"
+      }
+      dispatch(getApiConfig(url));
     } catch (err) {
       console.error(err);
     }
@@ -32,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */ }
         <Routes>
           <Route path='/' element={ <Home /> } />
           <Route path='/:mediaType/:id' element={ <Details /> } />
@@ -40,7 +43,7 @@ function App() {
           <Route path='/explore/:mediaType' element={ <Explore /> } />
           <Route path='*' element={ <PageNotFound /> } />
         </Routes>
-        <Footer />
+        {/* <Footer /> */ }
       </BrowserRouter>
     </div>
   );
