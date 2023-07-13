@@ -6,7 +6,8 @@ const Home = () => {
     return (
         <div>
             <Hero />
-            Home
+            home
+            <div style={ { height: 1000 } }></div>
         </div>
     )
 }
