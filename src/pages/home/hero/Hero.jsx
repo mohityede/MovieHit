@@ -14,11 +14,10 @@ const Hero = () => {
 	const { data, loading } = useFetchData("/movie/upcoming");
 
 	useEffect(() => {
-		if (data) {
-			const result = data.results;
-			const bg = url.backdropImgPath + result[Math.floor(Math.random() * result.length)].backdrop_path;
-			setBackgroundImg(bg);
-		}
+		if (!data?.results) return;
+		const result = data.results;
+		const bg = url.backdropImgPath + result[Math.floor(Math.random() * result.length)].backdrop_path;
+		setBackgroundImg(bg);
 	}, [data]);
 
 	const searchQueryHandler = (e) => {
