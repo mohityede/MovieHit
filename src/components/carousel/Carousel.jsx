@@ -15,7 +15,14 @@ const Carousel = ({ data, loading }) => {
     const navigate = useNavigate();
 
     const navigationArrow = (direction) => {
-
+        const container = carouselContaineer.current;
+        const scrollAmount = direction === "left"
+            ? container.scrollLeft - (container.offsetWidth + 20)
+            : container.scrollLeft + (container.offsetWidth + 20);
+        container.scrollTo({
+            left: scrollAmount,
+            behavior: "smooth",
+        });
     }
 
     const skeletonItem = () => {
@@ -36,13 +43,13 @@ const Carousel = ({ data, loading }) => {
                 <BsFillArrowLeftSquareFill className="carouselLeftNav arrow" onClick={ () => navigationArrow("left") } />
                 <BsFillArrowRightSquareFill className="carouselRightNav arrow" onClick={ () => navigationArrow("right") } />
                 { !loading ? (
-                    <div className="carouselItems">
+                    <div className="carouselItems" ref={ carouselContaineer }>
                         { data?.map((movie) => {
                             console.log("url", url);
                             const posterUrl = movie.poster_path ? url.backdropImgPath + movie.poster_path : NoPosterAvailable;
-                            console.log("posterUrl", posterUrl);
+                            // console.log("posterUrl", posterUrl);
                             return (
-                                <div key={ movie.id } className="carouselItem">
+                                <div key={ movie.id } className="carouselItem" onClick={ () => navigate(`/${movie.media_type}/${movie.id}`) }>
                                     <div className="posterBlock">
                                         <LazyImg src={ posterUrl } />
                                         <CircleRating rating={ movie.vote_average.toFixed(1) } />
