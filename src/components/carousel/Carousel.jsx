@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CircleRating from "../circleRating/CircleRating";
 
-const Carousel = ({ data, loading }) => {
+const Carousel = ({ data, loading, mediaType }) => {
     const carouselContaineer = useRef();
     const { url } = useSelector((state) => state.home);
     const navigate = useNavigate();
@@ -49,7 +49,7 @@ const Carousel = ({ data, loading }) => {
                             const posterUrl = movie.poster_path ? url.backdropImgPath + movie.poster_path : NoPosterAvailable;
                             // console.log("posterUrl", posterUrl);
                             return (
-                                <div key={ movie.id } className="carouselItem" onClick={ () => navigate(`/${movie.media_type}/${movie.id}`) }>
+                                <div key={ movie.id } className="carouselItem" onClick={ () => navigate(`/${mediaType}/${movie.id}`) }>
                                     <div className="posterBlock">
                                         <LazyImg src={ posterUrl } />
                                         <CircleRating rating={ movie.vote_average.toFixed(1) } />

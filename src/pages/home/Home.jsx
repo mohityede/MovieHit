@@ -2,14 +2,18 @@ import React from "react";
 import "./style.scss";
 import Hero from "./hero/Hero";
 import Trending from "./trending/Trending";
+import Popular from "./popular/Popular";
+import TopRated from "./topRated/TopRated";
+import Upcoming from "./upcoming/Upcoming";
 
 const Home = () => {
 	return (
 		<div>
 			<Hero />
 			<Trending />
-			home
-			<div style={ { height: 1000 } }></div>
+			<Popular />
+			<TopRated />
+			<Upcoming />
 		</div>
 	)
 }

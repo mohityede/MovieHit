@@ -5,10 +5,10 @@ import "../style.scss";
 import useFetchData from "../../../hooks/useFetchData";
 import Carousel from "../../../components/carousel/Carousel";
 
-const Trending = () => {
+const TopRated = () => {
     const [endpoint, setEndpoint] = useState("movie");
 
-    const { data, loading } = useFetchData(`/trending/${endpoint}/week`);
+    const { data, loading } = useFetchData(`/${endpoint}/top_rated`);
 
     const onTabSwitch = (tab) => {
         setEndpoint((tab === "Movies") ? "movie" : "tv");
@@ -16,7 +16,7 @@ const Trending = () => {
     return (
         <div className="carouselSection">
             <ContentWrapper>
-                <span className="carouselTitle">Trending</span>
+                <span className="carouselTitle">Top Rated</span>
                 <SwitchTab data={ ["Movies", "Shows"] } onTabSwitch={ onTabSwitch } />
             </ContentWrapper>
             <Carousel data={ data?.results } loading={ loading } mediaType={ endpoint } />
@@ -24,4 +24,4 @@ const Trending = () => {
     )
 }
 
-export default Trending;
+export default TopRated;
