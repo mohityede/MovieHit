@@ -58,7 +58,7 @@ const DetailsBanner = ({ trailerVideo, crew }) => {
 										</div>
 										<Genres data={ genresIdArr } />
 										<div className="row">
-											<CircleRating rating={ data?.vote_average.toFixed(1) } />
+											<CircleRating rating={ data?.vote_average?.toFixed(1) } />
 											<span style={ { color: "green" } }>votes:{ data?.vote_count }</span>
 											<div className="playbtn" onClick={ () => {
 												setShow(true);
