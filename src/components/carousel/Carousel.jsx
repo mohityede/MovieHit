@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CircleRating from "../circleRating/CircleRating";
 
-const Carousel = ({ data, loading, mediaType }) => {
+const Carousel = ({ title, data, loading, mediaType }) => {
     const carouselContaineer = useRef();
     const { url } = useSelector((state) => state.home);
     const navigate = useNavigate();
@@ -40,6 +40,7 @@ const Carousel = ({ data, loading, mediaType }) => {
     return (
         <div className="carousel">
             <ContentWrapper>
+                { title && <div className="carouselTitle">{ title }</div> }
                 <BsFillArrowLeftSquareFill className="carouselLeftNav arrow" onClick={ () => navigationArrow("left") } />
                 <BsFillArrowRightSquareFill className="carouselRightNav arrow" onClick={ () => navigationArrow("right") } />
                 { !loading ? (
