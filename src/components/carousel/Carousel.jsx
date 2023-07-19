@@ -1,13 +1,10 @@
 import React, { useRef } from "react";
 import { BsFillArrowRightSquareFill, BsFillArrowLeftSquareFill } from "react-icons/bs";
-import dayjs from "dayjs";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
-import LazyImg from "../lazyLoadImg/LazyImg";
-import NoPosterAvailable from "../../assets/no-movie-poster.jpg";
 import "./style.scss";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import CircleRating from "../circleRating/CircleRating";
+import MovieCard from "../movieCard/MovieCard";
 
 const Carousel = ({ title, data, loading, mediaType }) => {
     const carouselContaineer = useRef();
@@ -45,29 +42,15 @@ const Carousel = ({ title, data, loading, mediaType }) => {
                 <BsFillArrowRightSquareFill className="carouselRightNav arrow" onClick={ () => navigationArrow("right") } />
                 { !loading ? (
                     <div className="carouselItems" ref={ carouselContaineer }>
-                        { data?.map((movie) => {
-                            const posterUrl = movie.poster_path ? url.backdropImgPath + movie.poster_path : NoPosterAvailable;
-                            return (
-                                <div key={ movie.id } className="carouselItem" onClick={ () => navigate(`/${mediaType}/${movie.id}`) }>
-                                    <div className="posterBlock">
-                                        <LazyImg src={ posterUrl } />
-                                        <CircleRating rating={ movie.vote_average.toFixed(1) } />
-                                    </div>
-                                    <div className="textBlock">
-                                        <span className="title">{ movie.title || movie.name }</span>
-                                        <span className="date">{ dayjs(movie.release_Date).format("MMM D, YYYY") }</span>
-                                    </div>
-                                </div>
-                            )
-                        }) }
+                        { data?.map((movie, ind) => <MovieCard key={ ind } data={ movie } mediaType={ movie.media_type || mediaType || "movie" } fromSearch={ false } />) }
                     </div>
                 ) : (
                     <div className="loadingSkeleton">
-                        { skeletonItem }
-                        { skeletonItem }
-                        { skeletonItem }
-                        { skeletonItem }
-                        { skeletonItem }
+                        { skeletonItem() }
+                        { skeletonItem() }
+                        { skeletonItem() }
+                        { skeletonItem() }
+                        { skeletonItem() }
                     </div>
                 ) }
             </ContentWrapper>
