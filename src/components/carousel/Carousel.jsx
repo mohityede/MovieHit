@@ -46,9 +46,7 @@ const Carousel = ({ title, data, loading, mediaType }) => {
                 { !loading ? (
                     <div className="carouselItems" ref={ carouselContaineer }>
                         { data?.map((movie) => {
-                            console.log("url", url);
                             const posterUrl = movie.poster_path ? url.backdropImgPath + movie.poster_path : NoPosterAvailable;
-                            // console.log("posterUrl", posterUrl);
                             return (
                                 <div key={ movie.id } className="carouselItem" onClick={ () => navigate(`/${mediaType}/${movie.id}`) }>
                                     <div className="posterBlock">

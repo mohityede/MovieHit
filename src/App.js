@@ -25,7 +25,6 @@ function App() {
   const getConfiguration = async () => {
     try {
       const res = await fetchData("/configuration");
-      console.log(res);
       const url = {
         backdropImgPath: res.images.secure_base_url + "original"
       }
@@ -39,12 +38,10 @@ function App() {
     try {
       let allGenres = {};
       const data = await Promise.all([fetchData("/genre/tv/list"), fetchData("/genre/movie/list")]);
-      console.log("genre Data", data);
       data.map(({ genres }) => {
         return genres.map((currGenre) => (allGenres[currGenre.id] = currGenre));
       })
       dispatch(getApiGenres(allGenres))
-      // console.log("allGenre:", allGenres);
     } catch (err) {
       console.error(err);
     }
