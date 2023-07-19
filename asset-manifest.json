@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/MovieHit/static/css/main.9eb04446.css",
+    "main.js": "/MovieHit/static/js/main.b2ae8398.js",
+    "static/media/no-movie-poster.jpg": "/MovieHit/static/media/no-movie-poster.6e872c1c39209974e134.jpg",
+    "static/media/user-icon.png": "/MovieHit/static/media/user-icon.5faf09a7795d28bf5a2b.png",
+    "index.html": "/MovieHit/index.html",
+    "main.9eb04446.css.map": "/MovieHit/static/css/main.9eb04446.css.map",
+    "main.b2ae8398.js.map": "/MovieHit/static/js/main.b2ae8398.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9eb04446.css",
+    "static/js/main.b2ae8398.js"
+  ]
+}
