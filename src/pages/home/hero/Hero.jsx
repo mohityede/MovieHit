@@ -21,7 +21,7 @@ const Hero = () => {
 	}, [data]);
 
 	const searchQueryHandler = (e) => {
-		if (e.key === "Enter" && searchQuery.length > 0) {
+		if (e.type === "click" || (e.key === "Enter" && searchQuery.length > 0)) {
 			navigate(`/search/${searchQuery}`);
 		}
 	}
@@ -46,7 +46,7 @@ const Hero = () => {
 							onChange={ (e) => setSearchQuery(e.target.value) }
 							onKeyUp={ searchQueryHandler }
 						/>
-						<button>Search</button>
+						<button onClick={ (e) => searchQueryHandler(e) }>Search</button>
 					</div>
 				</div>
 			</ContentWrapper>
