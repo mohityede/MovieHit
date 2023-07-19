@@ -53,6 +53,7 @@ function App() {
         { <Header /> }
         <Routes>
           <Route path='/' element={ <Home /> } />
+          <Route path='/MovieHit' element={ <Home /> } />
           <Route path='/:mediaType/:id' element={ <Details /> } />
           <Route path='/search/:query' element={ <Search /> } />
           <Route path='/explore/:mediaType' element={ <Explore /> } />
