@@ -1,15 +1,11 @@
 import React, { useRef } from "react";
 import { BsFillArrowRightSquareFill, BsFillArrowLeftSquareFill } from "react-icons/bs";
-import ContentWrapper from "../contentWrapper/ContentWrapper";
 import "./style.scss";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import ContentWrapper from "../contentWrapper/ContentWrapper";
 import MovieCard from "../movieCard/MovieCard";
 
 const Carousel = ({ title, data, loading, mediaType }) => {
     const carouselContaineer = useRef();
-    const { url } = useSelector((state) => state.home);
-    const navigate = useNavigate();
 
     const navigationArrow = (direction) => {
         const container = carouselContaineer.current;
