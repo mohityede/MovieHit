@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_TOKEN = process.env.REACT_APP_TMDB_API_TOKEN;
+const API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NTc4N2YzNTAwYjNhNWZhY2M0NjdjNWM3OGYzNWE1OSIsInN1YiI6IjYwOGU2MDE2NjUxN2Q2MDAyOWYyNTk3MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eYO7CWE2wKcr06ZNYXatO97W-Eu82hCAIjf6EtpJLpY";
 const BASE_URI = "https://api.themoviedb.org/3";
 
 const header = {
